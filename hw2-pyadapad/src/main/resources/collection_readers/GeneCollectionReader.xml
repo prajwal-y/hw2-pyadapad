@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<collectionReaderDescription xmlns="http://uima.apache.org/resourceSpecifier">
+    <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
+    <implementationName>project.deiis.hw2.GeneCollectionReader</implementationName>
+    <processingResourceMetaData>
+        <name>File System Collection Reader</name>
+        <description>Reads from the input File</description>
+        <version>1.0</version>
+        <vendor>The Apache Software Foundation</vendor>
+        <configurationParameters>
+            <configurationParameter>
+        <name>InputFile</name>
+        <type>String</type>
+        <multiValued>false</multiValued>
+        <mandatory>true</mandatory>
+      </configurationParameter>
+    </configurationParameters>
+		<configurationParameterSettings>
+		    <nameValuePair>
+        <name>InputFile</name>
+        <value>
+          <string>./src/main/resources/data/sample.in</string>
+        </value>
+      </nameValuePair>
+    </configurationParameterSettings>
+        <typeSystemDescription>
+          <imports>
+            <import location="/home/prajwal/git/hw2-pyadapad/hw2-pyadapad/src/main/resources/descriptors/deiis_types.xml"/>
+      </imports>
+        </typeSystemDescription>
+
+        <capabilities>
+          	<capability>
+          		<inputs/>
+          		<outputs>
+          			<type allAnnotatorFeatures="true">org.apache.uima.examples.SourceDocumentInformation</type>
+          		</outputs>
+          	<languagesSupported/>
+      </capability>
+        </capabilities>
+		<operationalProperties>
+			<modifiesCas>true</modifiesCas>
+			<multipleDeploymentAllowed>false</multipleDeploymentAllowed>
+			<outputsNewCASes>true</outputsNewCASes>
+		</operationalProperties>		
+    </processingResourceMetaData>
+</collectionReaderDescription>
