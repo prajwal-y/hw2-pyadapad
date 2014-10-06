@@ -26,7 +26,7 @@
     </configurationParameterSettings>
     <typeSystemDescription>
       <imports>
-        <import location="/home/prajwal/git/hw2-pyadapad/hw2-pyadapad/src/main/resources/descriptors/deiis_types.xml"/>
+        <import name="descriptors.deiis_types"/>
       </imports>
     </typeSystemDescription>
     <typePriorities/>

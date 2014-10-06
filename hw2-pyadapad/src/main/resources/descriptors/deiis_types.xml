@@ -21,6 +21,26 @@
           <description>The confidence level assigned to the Annotation by the CAS processor that created it.</description>
           <rangeTypeName>uima.cas.Double</rangeTypeName>
         </featureDescription>
+      <featureDescription>
+          <name>geneData</name>
+          <description/>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>sentenceId</name>
+          <description/>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>startOffset</name>
+          <description/>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>endOffset</name>
+          <description/>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+        </featureDescription>
       </features>
     </typeDescription>
     <typeDescription>

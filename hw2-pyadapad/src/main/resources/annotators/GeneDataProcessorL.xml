@@ -2,9 +2,9 @@
 
 <analysisEngineDescription xmlns="http://uima.apache.org/resourceSpecifier">
   <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
-  <primitive>true</primitive>  <annotatorImplementationName>project.deiis.hw2.GeneDataProcessor</annotatorImplementationName>
+  <primitive>true</primitive>  <annotatorImplementationName>project.deiis.hw2.LingPipeGeneDataProcessor</annotatorImplementationName>
   <analysisEngineMetaData>
-    <name>GeneDataProcessor</name>
+    <name>GeneDataProcessorL</name>
     <description/>
     <version>1.0</version>
     <vendor/>
@@ -12,7 +12,7 @@
     <configurationParameterSettings/>
     <typeSystemDescription>
       <imports>
-        <import location="/home/prajwal/git/hw2-pyadapad/hw2-pyadapad/src/main/resources/descriptors/deiis_types.xml"/>
+        <import name="descriptors.deiis_types"/>
       </imports>
     </typeSystemDescription>
     <typePriorities/>

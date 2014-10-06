@@ -2,21 +2,19 @@ package project.deiis.hw2;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Set;
+import java.util.Iterator;
 
 import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.FSIterator;
 import org.apache.uima.jcas.JCas;
-import org.apache.uima.jcas.tcas.Annotation;
 
 import com.aliasi.chunk.Chunk;
-import com.aliasi.chunk.Chunker;
-import com.aliasi.chunk.Chunking;
+import com.aliasi.chunk.ConfidenceChunker;
 import com.aliasi.util.AbstractExternalizable;
 
+import edu.cmu.deiis.types.Annotation;
 import edu.cmu.deiis.types.InputData;
-import edu.cmu.deiis.types.Results;
 
 /**
  * This class is responsible for using the LingPipe named entity recognition library to
@@ -27,9 +25,9 @@ import edu.cmu.deiis.types.Results;
  * @author pyadapad
  *
  */
-public class GeneDataProcessor extends JCasAnnotator_ImplBase {
+public class LingPipeGeneDataProcessor extends JCasAnnotator_ImplBase {
 
-  Chunker chunker = null;
+  ConfidenceChunker chunker = null;
 
   @Override
   public void process(JCas jCas) throws AnalysisEngineProcessException {
@@ -38,7 +36,7 @@ public class GeneDataProcessor extends JCasAnnotator_ImplBase {
     File modelFile = new File("./src/main/resources/data/gene_model");
     chunker = null;
     try {
-      chunker = (Chunker) AbstractExternalizable.readObject(modelFile);
+      chunker = (ConfidenceChunker) AbstractExternalizable.readObject(modelFile);
     } catch (IOException e) {
       System.out.println("IOException occurred: " + e.getMessage());
     } catch (ClassNotFoundException e) {
@@ -54,30 +52,34 @@ public class GeneDataProcessor extends JCasAnnotator_ImplBase {
    * @param jCas
    */
   public void processInstance(JCas jCas) {
-    FSIterator<Annotation> it = jCas.getAnnotationIndex(InputData.type).iterator();
+    FSIterator<org.apache.uima.jcas.tcas.Annotation> it = jCas.getAnnotationIndex(InputData.type).iterator();
     int counter = 0;
     while (it.hasNext()) {
       InputData input = (InputData) it.next();
       String sentenceId = input.getSentenceId();
       String geneProduct = input.getGeneData();
-      Chunking chunking = chunker.chunk(geneProduct);
-      Set<Chunk> genes = chunking.chunkSet();
 
-      for (Chunk c : genes) {
-        ;
+      Iterator<Chunk> iter = chunker.nBestChunks(geneProduct.toCharArray(), 0, geneProduct.length(), 5);
+      while(iter.hasNext()) {
+        Chunk c = (Chunk) iter.next();
+        double confidence = Math.pow(2.0, c.score());;
         int start = c.start();
         int end = c.end();
-        Results results = new Results(jCas);
-        results.setSentenceId(sentenceId);
         String gene = geneProduct.substring(start, end);
-        results.setGeneProduct(gene);
+        Annotation annotation = new Annotation(jCas);
+        annotation.setCasProcessorId("LingPipe");
+        annotation.setSentenceId(sentenceId);
+        annotation.setGeneData(gene);
+        annotation.setConfidence(confidence);
         int startOffset = 0;
         if (start != 0)
           startOffset = geneProduct.substring(0, start - 1).replace(" ", "").length();
-        results.setGeneStartOffset(startOffset);
-        results.setGeneEndOffset(startOffset + gene.replace(" ", "").length() - 1);
-        results.setBegin(counter++);
-        results.addToIndexes();
+        annotation.setStartOffset(startOffset);
+        annotation.setEndOffset(startOffset + gene.replace(" ", "").length() - 1);
+        annotation.setBegin(counter++);
+        //annotation.setEnd(-10000);
+        annotation.addToIndexes();
+        //System.out.println("GeneProduct: " + gene + " and confidence: " + confidence);
       }
     }
   }

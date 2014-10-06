@@ -20,7 +20,7 @@ import edu.cmu.deiis.types.InputData;
  * the string containing gene information (geneData) and passing the information to the analysis
  * engine using the InputData feature in the Cas.
  * 
- * @author pyadaoad
+ * @author pyadapad
  *
  */
 public class GeneCollectionReader extends CollectionReader_ImplBase {
@@ -71,6 +71,7 @@ public class GeneCollectionReader extends CollectionReader_ImplBase {
       input.setBegin(counter++);
       input.addToIndexes();
     }
+    br.close();
   }
 
   /**

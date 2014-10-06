@@ -10,8 +10,8 @@ import org.apache.uima.jcas.cas.TOP_Type;
 
 
 /** 
- * Updated by JCasGen Sat Oct 04 03:45:02 EDT 2014
- * XML source: /home/prajwal/git/hw2-pyadapad/hw2-pyadapad/src/main/resources/annotators/GeneDataProcessor.xml
+ * Updated by JCasGen Sun Oct 05 20:42:57 EDT 2014
+ * XML source: /home/prajwal/git/hw2-pyadapad/hw2-pyadapad/src/main/resources/descriptors/deiis_types.xml
  * @generated */
 public class Annotation extends org.apache.uima.jcas.tcas.Annotation {
   /** @generated
@@ -106,6 +106,94 @@ public class Annotation extends org.apache.uima.jcas.tcas.Annotation {
     if (Annotation_Type.featOkTst && ((Annotation_Type)jcasType).casFeat_confidence == null)
       jcasType.jcas.throwFeatMissing("confidence", "edu.cmu.deiis.types.Annotation");
     jcasType.ll_cas.ll_setDoubleValue(addr, ((Annotation_Type)jcasType).casFeatCode_confidence, v);}    
+   
+    
+  //*--------------*
+  //* Feature: geneData
+
+  /** getter for geneData - gets 
+   * @generated
+   * @return value of the feature 
+   */
+  public String getGeneData() {
+    if (Annotation_Type.featOkTst && ((Annotation_Type)jcasType).casFeat_geneData == null)
+      jcasType.jcas.throwFeatMissing("geneData", "edu.cmu.deiis.types.Annotation");
+    return jcasType.ll_cas.ll_getStringValue(addr, ((Annotation_Type)jcasType).casFeatCode_geneData);}
+    
+  /** setter for geneData - sets  
+   * @generated
+   * @param v value to set into the feature 
+   */
+  public void setGeneData(String v) {
+    if (Annotation_Type.featOkTst && ((Annotation_Type)jcasType).casFeat_geneData == null)
+      jcasType.jcas.throwFeatMissing("geneData", "edu.cmu.deiis.types.Annotation");
+    jcasType.ll_cas.ll_setStringValue(addr, ((Annotation_Type)jcasType).casFeatCode_geneData, v);}    
+   
+    
+  //*--------------*
+  //* Feature: sentenceId
+
+  /** getter for sentenceId - gets 
+   * @generated
+   * @return value of the feature 
+   */
+  public String getSentenceId() {
+    if (Annotation_Type.featOkTst && ((Annotation_Type)jcasType).casFeat_sentenceId == null)
+      jcasType.jcas.throwFeatMissing("sentenceId", "edu.cmu.deiis.types.Annotation");
+    return jcasType.ll_cas.ll_getStringValue(addr, ((Annotation_Type)jcasType).casFeatCode_sentenceId);}
+    
+  /** setter for sentenceId - sets  
+   * @generated
+   * @param v value to set into the feature 
+   */
+  public void setSentenceId(String v) {
+    if (Annotation_Type.featOkTst && ((Annotation_Type)jcasType).casFeat_sentenceId == null)
+      jcasType.jcas.throwFeatMissing("sentenceId", "edu.cmu.deiis.types.Annotation");
+    jcasType.ll_cas.ll_setStringValue(addr, ((Annotation_Type)jcasType).casFeatCode_sentenceId, v);}    
+   
+    
+  //*--------------*
+  //* Feature: startOffset
+
+  /** getter for startOffset - gets 
+   * @generated
+   * @return value of the feature 
+   */
+  public int getStartOffset() {
+    if (Annotation_Type.featOkTst && ((Annotation_Type)jcasType).casFeat_startOffset == null)
+      jcasType.jcas.throwFeatMissing("startOffset", "edu.cmu.deiis.types.Annotation");
+    return jcasType.ll_cas.ll_getIntValue(addr, ((Annotation_Type)jcasType).casFeatCode_startOffset);}
+    
+  /** setter for startOffset - sets  
+   * @generated
+   * @param v value to set into the feature 
+   */
+  public void setStartOffset(int v) {
+    if (Annotation_Type.featOkTst && ((Annotation_Type)jcasType).casFeat_startOffset == null)
+      jcasType.jcas.throwFeatMissing("startOffset", "edu.cmu.deiis.types.Annotation");
+    jcasType.ll_cas.ll_setIntValue(addr, ((Annotation_Type)jcasType).casFeatCode_startOffset, v);}    
+   
+    
+  //*--------------*
+  //* Feature: endOffset
+
+  /** getter for endOffset - gets 
+   * @generated
+   * @return value of the feature 
+   */
+  public int getEndOffset() {
+    if (Annotation_Type.featOkTst && ((Annotation_Type)jcasType).casFeat_endOffset == null)
+      jcasType.jcas.throwFeatMissing("endOffset", "edu.cmu.deiis.types.Annotation");
+    return jcasType.ll_cas.ll_getIntValue(addr, ((Annotation_Type)jcasType).casFeatCode_endOffset);}
+    
+  /** setter for endOffset - sets  
+   * @generated
+   * @param v value to set into the feature 
+   */
+  public void setEndOffset(int v) {
+    if (Annotation_Type.featOkTst && ((Annotation_Type)jcasType).casFeat_endOffset == null)
+      jcasType.jcas.throwFeatMissing("endOffset", "edu.cmu.deiis.types.Annotation");
+    jcasType.ll_cas.ll_setIntValue(addr, ((Annotation_Type)jcasType).casFeatCode_endOffset, v);}    
   }
 
     

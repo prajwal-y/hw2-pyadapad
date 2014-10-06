@@ -1,5 +1,5 @@
 
-/* First created by JCasGen Wed Sep 11 13:44:28 EDT 2013 */
+/* First created by JCasGen Sun Oct 05 17:45:05 EDT 2014 */
 package edu.cmu.deiis.types;
 
 import org.apache.uima.jcas.JCas;
@@ -13,69 +13,59 @@ import org.apache.uima.cas.impl.FeatureImpl;
 import org.apache.uima.cas.Feature;
 
 /** 
- * Updated by JCasGen Sun Oct 05 20:42:57 EDT 2014
+ * Updated by JCasGen Sun Oct 05 17:45:07 EDT 2014
  * @generated */
-public class Annotation_Type extends org.apache.uima.jcas.tcas.Annotation_Type {
-  /** @generated */
+public class AnnotatorResults_Type extends Annotation_Type {
+  /** @generated 
+   * @return the generator for this type
+   */
   @Override
   protected FSGenerator getFSGenerator() {return fsGenerator;}
   /** @generated */
   private final FSGenerator fsGenerator = 
     new FSGenerator() {
       public FeatureStructure createFS(int addr, CASImpl cas) {
-  			 if (Annotation_Type.this.useExistingInstance) {
+  			 if (AnnotatorResults_Type.this.useExistingInstance) {
   			   // Return eq fs instance if already created
-  		     FeatureStructure fs = Annotation_Type.this.jcas.getJfsFromCaddr(addr);
+  		     FeatureStructure fs = AnnotatorResults_Type.this.jcas.getJfsFromCaddr(addr);
   		     if (null == fs) {
-  		       fs = new Annotation(addr, Annotation_Type.this);
-  			   Annotation_Type.this.jcas.putJfsFromCaddr(addr, fs);
+  		       fs = new AnnotatorResults(addr, AnnotatorResults_Type.this);
+  			   AnnotatorResults_Type.this.jcas.putJfsFromCaddr(addr, fs);
   			   return fs;
   		     }
   		     return fs;
-        } else return new Annotation(addr, Annotation_Type.this);
+        } else return new AnnotatorResults(addr, AnnotatorResults_Type.this);
   	  }
     };
   /** @generated */
   @SuppressWarnings ("hiding")
-  public final static int typeIndexID = Annotation.typeIndexID;
+  public final static int typeIndexID = AnnotatorResults.typeIndexID;
   /** @generated 
      @modifiable */
   @SuppressWarnings ("hiding")
-  public final static boolean featOkTst = JCasRegistry.getFeatOkTst("edu.cmu.deiis.types.Annotation");
+  public final static boolean featOkTst = JCasRegistry.getFeatOkTst("edu.cmu.deiis.types.AnnotatorResults");
  
   /** @generated */
   final Feature casFeat_casProcessorId;
   /** @generated */
   final int     casFeatCode_casProcessorId;
-  /** @generated */ 
+  /** @generated
+   * @param addr low level Feature Structure reference
+   * @return the feature value 
+   */ 
   public String getCasProcessorId(int addr) {
         if (featOkTst && casFeat_casProcessorId == null)
-      jcas.throwFeatMissing("casProcessorId", "edu.cmu.deiis.types.Annotation");
+      jcas.throwFeatMissing("casProcessorId", "edu.cmu.deiis.types.AnnotatorResults");
     return ll_cas.ll_getStringValue(addr, casFeatCode_casProcessorId);
   }
-  /** @generated */    
+  /** @generated
+   * @param addr low level Feature Structure reference
+   * @param v value to set 
+   */    
   public void setCasProcessorId(int addr, String v) {
         if (featOkTst && casFeat_casProcessorId == null)
-      jcas.throwFeatMissing("casProcessorId", "edu.cmu.deiis.types.Annotation");
+      jcas.throwFeatMissing("casProcessorId", "edu.cmu.deiis.types.AnnotatorResults");
     ll_cas.ll_setStringValue(addr, casFeatCode_casProcessorId, v);}
-    
-  
- 
-  /** @generated */
-  final Feature casFeat_confidence;
-  /** @generated */
-  final int     casFeatCode_confidence;
-  /** @generated */ 
-  public double getConfidence(int addr) {
-        if (featOkTst && casFeat_confidence == null)
-      jcas.throwFeatMissing("confidence", "edu.cmu.deiis.types.Annotation");
-    return ll_cas.ll_getDoubleValue(addr, casFeatCode_confidence);
-  }
-  /** @generated */    
-  public void setConfidence(int addr, double v) {
-        if (featOkTst && casFeat_confidence == null)
-      jcas.throwFeatMissing("confidence", "edu.cmu.deiis.types.Annotation");
-    ll_cas.ll_setDoubleValue(addr, casFeatCode_confidence, v);}
     
   
  
@@ -89,7 +79,7 @@ public class Annotation_Type extends org.apache.uima.jcas.tcas.Annotation_Type {
    */ 
   public String getGeneData(int addr) {
         if (featOkTst && casFeat_geneData == null)
-      jcas.throwFeatMissing("geneData", "edu.cmu.deiis.types.Annotation");
+      jcas.throwFeatMissing("geneData", "edu.cmu.deiis.types.AnnotatorResults");
     return ll_cas.ll_getStringValue(addr, casFeatCode_geneData);
   }
   /** @generated
@@ -98,7 +88,7 @@ public class Annotation_Type extends org.apache.uima.jcas.tcas.Annotation_Type {
    */    
   public void setGeneData(int addr, String v) {
         if (featOkTst && casFeat_geneData == null)
-      jcas.throwFeatMissing("geneData", "edu.cmu.deiis.types.Annotation");
+      jcas.throwFeatMissing("geneData", "edu.cmu.deiis.types.AnnotatorResults");
     ll_cas.ll_setStringValue(addr, casFeatCode_geneData, v);}
     
   
@@ -113,7 +103,7 @@ public class Annotation_Type extends org.apache.uima.jcas.tcas.Annotation_Type {
    */ 
   public String getSentenceId(int addr) {
         if (featOkTst && casFeat_sentenceId == null)
-      jcas.throwFeatMissing("sentenceId", "edu.cmu.deiis.types.Annotation");
+      jcas.throwFeatMissing("sentenceId", "edu.cmu.deiis.types.AnnotatorResults");
     return ll_cas.ll_getStringValue(addr, casFeatCode_sentenceId);
   }
   /** @generated
@@ -122,8 +112,32 @@ public class Annotation_Type extends org.apache.uima.jcas.tcas.Annotation_Type {
    */    
   public void setSentenceId(int addr, String v) {
         if (featOkTst && casFeat_sentenceId == null)
-      jcas.throwFeatMissing("sentenceId", "edu.cmu.deiis.types.Annotation");
+      jcas.throwFeatMissing("sentenceId", "edu.cmu.deiis.types.AnnotatorResults");
     ll_cas.ll_setStringValue(addr, casFeatCode_sentenceId, v);}
+    
+  
+ 
+  /** @generated */
+  final Feature casFeat_confidence;
+  /** @generated */
+  final int     casFeatCode_confidence;
+  /** @generated
+   * @param addr low level Feature Structure reference
+   * @return the feature value 
+   */ 
+  public double getConfidence(int addr) {
+        if (featOkTst && casFeat_confidence == null)
+      jcas.throwFeatMissing("confidence", "edu.cmu.deiis.types.AnnotatorResults");
+    return ll_cas.ll_getDoubleValue(addr, casFeatCode_confidence);
+  }
+  /** @generated
+   * @param addr low level Feature Structure reference
+   * @param v value to set 
+   */    
+  public void setConfidence(int addr, double v) {
+        if (featOkTst && casFeat_confidence == null)
+      jcas.throwFeatMissing("confidence", "edu.cmu.deiis.types.AnnotatorResults");
+    ll_cas.ll_setDoubleValue(addr, casFeatCode_confidence, v);}
     
   
  
@@ -137,7 +151,7 @@ public class Annotation_Type extends org.apache.uima.jcas.tcas.Annotation_Type {
    */ 
   public int getStartOffset(int addr) {
         if (featOkTst && casFeat_startOffset == null)
-      jcas.throwFeatMissing("startOffset", "edu.cmu.deiis.types.Annotation");
+      jcas.throwFeatMissing("startOffset", "edu.cmu.deiis.types.AnnotatorResults");
     return ll_cas.ll_getIntValue(addr, casFeatCode_startOffset);
   }
   /** @generated
@@ -146,7 +160,7 @@ public class Annotation_Type extends org.apache.uima.jcas.tcas.Annotation_Type {
    */    
   public void setStartOffset(int addr, int v) {
         if (featOkTst && casFeat_startOffset == null)
-      jcas.throwFeatMissing("startOffset", "edu.cmu.deiis.types.Annotation");
+      jcas.throwFeatMissing("startOffset", "edu.cmu.deiis.types.AnnotatorResults");
     ll_cas.ll_setIntValue(addr, casFeatCode_startOffset, v);}
     
   
@@ -161,7 +175,7 @@ public class Annotation_Type extends org.apache.uima.jcas.tcas.Annotation_Type {
    */ 
   public int getEndOffset(int addr) {
         if (featOkTst && casFeat_endOffset == null)
-      jcas.throwFeatMissing("endOffset", "edu.cmu.deiis.types.Annotation");
+      jcas.throwFeatMissing("endOffset", "edu.cmu.deiis.types.AnnotatorResults");
     return ll_cas.ll_getIntValue(addr, casFeatCode_endOffset);
   }
   /** @generated
@@ -170,7 +184,7 @@ public class Annotation_Type extends org.apache.uima.jcas.tcas.Annotation_Type {
    */    
   public void setEndOffset(int addr, int v) {
         if (featOkTst && casFeat_endOffset == null)
-      jcas.throwFeatMissing("endOffset", "edu.cmu.deiis.types.Annotation");
+      jcas.throwFeatMissing("endOffset", "edu.cmu.deiis.types.AnnotatorResults");
     ll_cas.ll_setIntValue(addr, casFeatCode_endOffset, v);}
     
   
@@ -178,8 +192,11 @@ public class Annotation_Type extends org.apache.uima.jcas.tcas.Annotation_Type {
 
 
   /** initialize variables to correspond with Cas Type and Features
-	* @generated */
-  public Annotation_Type(JCas jcas, Type casType) {
+	 * @generated
+	 * @param jcas JCas
+	 * @param casType Type 
+	 */
+  public AnnotatorResults_Type(JCas jcas, Type casType) {
     super(jcas, casType);
     casImpl.getFSClassRegistry().addGeneratorForType((TypeImpl)this.casType, getFSGenerator());
 
@@ -188,16 +205,16 @@ public class Annotation_Type extends org.apache.uima.jcas.tcas.Annotation_Type {
     casFeatCode_casProcessorId  = (null == casFeat_casProcessorId) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_casProcessorId).getCode();
 
  
-    casFeat_confidence = jcas.getRequiredFeatureDE(casType, "confidence", "uima.cas.Double", featOkTst);
-    casFeatCode_confidence  = (null == casFeat_confidence) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_confidence).getCode();
-
- 
     casFeat_geneData = jcas.getRequiredFeatureDE(casType, "geneData", "uima.cas.String", featOkTst);
     casFeatCode_geneData  = (null == casFeat_geneData) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_geneData).getCode();
 
  
     casFeat_sentenceId = jcas.getRequiredFeatureDE(casType, "sentenceId", "uima.cas.String", featOkTst);
     casFeatCode_sentenceId  = (null == casFeat_sentenceId) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_sentenceId).getCode();
+
+ 
+    casFeat_confidence = jcas.getRequiredFeatureDE(casType, "confidence", "uima.cas.Double", featOkTst);
+    casFeatCode_confidence  = (null == casFeat_confidence) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_confidence).getCode();
 
  
     casFeat_startOffset = jcas.getRequiredFeatureDE(casType, "startOffset", "uima.cas.Integer", featOkTst);
