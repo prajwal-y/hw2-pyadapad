@@ -10,8 +10,8 @@ import org.apache.uima.jcas.cas.TOP_Type;
 
 
 /** 
- * Updated by JCasGen Sun Oct 05 20:42:57 EDT 2014
- * XML source: /home/prajwal/git/hw2-pyadapad/hw2-pyadapad/src/main/resources/descriptors/deiis_types.xml
+ * Updated by JCasGen Wed Oct 08 01:37:51 EDT 2014
+ * XML source: /home/prajwal/git/hw2-pyadapad/hw2-pyadapad/src/main/resources/annotators/GeneDataProcessorL.xml
  * @generated */
 public class Token extends Annotation {
   /** @generated

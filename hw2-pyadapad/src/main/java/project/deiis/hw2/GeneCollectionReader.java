@@ -33,6 +33,7 @@ public class GeneCollectionReader extends CollectionReader_ImplBase {
    * @see org.apache.uima.collection.CollectionReader_ImplBase#initialize()
    */
   public void initialize() throws ResourceInitializationException {
+    //System.out.println("Hello starting!!!" + (String) getConfigParameterValue(PARAM_INPUTFILE));
     File file = new File(((String) getConfigParameterValue(PARAM_INPUTFILE)).trim());
     if (!file.exists()) {
       throw new ResourceInitializationException("Input file not found", new Object[] {

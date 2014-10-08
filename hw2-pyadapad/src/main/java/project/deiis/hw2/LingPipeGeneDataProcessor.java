@@ -17,9 +17,9 @@ import edu.cmu.deiis.types.Annotation;
 import edu.cmu.deiis.types.InputData;
 
 /**
- * This class is responsible for using the LingPipe named entity recognition library to
- * extract the gene names based on a trained model (GENTAG). GeneDataProcessor is also responsible
- * for calculating the start and end offsets for the output, and passing the output to Cas Consumer
+ * This class is responsible for using the LingPipe named entity recognition library to extract the
+ * gene names based on a trained model (GENTAG). GeneDataProcessor is also responsible for
+ * calculating the start and end offsets for the output, and passing the output to Cas Consumer
  * using the Results feature.
  * 
  * @author pyadapad
@@ -29,14 +29,19 @@ public class LingPipeGeneDataProcessor extends JCasAnnotator_ImplBase {
 
   ConfidenceChunker chunker = null;
 
+  private static String MODEL = "model";
+
   @Override
   public void process(JCas jCas) throws AnalysisEngineProcessException {
     // Open the model file and train the chunker with the gene model
     // The model is pre-trained
-    File modelFile = new File("./src/main/resources/data/gene_model");
+     File modelFile = new File((String) getContext().getConfigParameterValue(MODEL));
     chunker = null;
     try {
       chunker = (ConfidenceChunker) AbstractExternalizable.readObject(modelFile);
+      //chunker = (ConfidenceChunker) AbstractExternalizable
+      //        .readResourceObject(LingPipeGeneDataProcessor.class, (String) getContext()
+      //                .getConfigParameterValue(MODEL));
     } catch (IOException e) {
       System.out.println("IOException occurred: " + e.getMessage());
     } catch (ClassNotFoundException e) {
@@ -52,17 +57,20 @@ public class LingPipeGeneDataProcessor extends JCasAnnotator_ImplBase {
    * @param jCas
    */
   public void processInstance(JCas jCas) {
-    FSIterator<org.apache.uima.jcas.tcas.Annotation> it = jCas.getAnnotationIndex(InputData.type).iterator();
+    FSIterator<org.apache.uima.jcas.tcas.Annotation> it = jCas.getAnnotationIndex(InputData.type)
+            .iterator();
     int counter = 0;
     while (it.hasNext()) {
       InputData input = (InputData) it.next();
       String sentenceId = input.getSentenceId();
       String geneProduct = input.getGeneData();
 
-      Iterator<Chunk> iter = chunker.nBestChunks(geneProduct.toCharArray(), 0, geneProduct.length(), 5);
-      while(iter.hasNext()) {
+      Iterator<Chunk> iter = chunker.nBestChunks(geneProduct.toCharArray(), 0,
+              geneProduct.length(), 5);
+      counter++;
+      while (iter.hasNext()) {
         Chunk c = (Chunk) iter.next();
-        double confidence = Math.pow(2.0, c.score());;
+        double confidence = Math.pow(2.0, c.score());
         int start = c.start();
         int end = c.end();
         String gene = geneProduct.substring(start, end);
@@ -76,10 +84,11 @@ public class LingPipeGeneDataProcessor extends JCasAnnotator_ImplBase {
           startOffset = geneProduct.substring(0, start - 1).replace(" ", "").length();
         annotation.setStartOffset(startOffset);
         annotation.setEndOffset(startOffset + gene.replace(" ", "").length() - 1);
-        annotation.setBegin(counter++);
-        //annotation.setEnd(-10000);
+        annotation.setBegin(counter);
+        annotation.setEnd(geneProduct.length() - startOffset);
+        // annotation.setEnd(-10000);
         annotation.addToIndexes();
-        //System.out.println("GeneProduct: " + gene + " and confidence: " + confidence);
+        // System.out.println("GeneProduct: " + gene + " and confidence: " + confidence);
       }
     }
   }

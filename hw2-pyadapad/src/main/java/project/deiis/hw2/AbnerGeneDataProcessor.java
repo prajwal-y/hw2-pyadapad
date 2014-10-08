@@ -9,6 +9,12 @@ import abner.Tagger;
 import edu.cmu.deiis.types.Annotation;
 import edu.cmu.deiis.types.InputData;
 
+/**
+ * This class is responsible for recognizing the gene named entities using
+ * the Abner biomedical named entity recognizer library
+ * @author pyadapad
+ *
+ */
 public class AbnerGeneDataProcessor extends JCasAnnotator_ImplBase {
   
   Tagger tagger = null;
@@ -27,7 +33,6 @@ public class AbnerGeneDataProcessor extends JCasAnnotator_ImplBase {
   public void processInstance(JCas jCas) {
     FSIterator<org.apache.uima.jcas.tcas.Annotation> it = jCas.getAnnotationIndex(InputData.type).iterator();
     int counter = jCas.getAnnotationIndex(Annotation.type).size() + 1;
-    System.out.println("Counter is: "+counter);
     while (it.hasNext()) {
       InputData input = (InputData) it.next();
       String sentenceId = input.getSentenceId();
@@ -47,7 +52,6 @@ public class AbnerGeneDataProcessor extends JCasAnnotator_ImplBase {
         annotation.setEndOffset(startOffset + data[0][j].replace(" ", "").length() - 1);
         annotation.setBegin(counter++);
         annotation.addToIndexes();
-        //System.out.println(data[1][j]+"\t["+data[0][j]+"]");
       }
     }
   }
