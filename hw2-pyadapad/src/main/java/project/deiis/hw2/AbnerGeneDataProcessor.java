@@ -21,6 +21,7 @@ public class AbnerGeneDataProcessor extends JCasAnnotator_ImplBase {
 
   @Override
   public void process(JCas jCas) throws AnalysisEngineProcessException {
+      System.out.println("Processing using Abner");
       tagger = new Tagger(1);
       processInstance(jCas);
   }

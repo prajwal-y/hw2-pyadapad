@@ -20,7 +20,7 @@
       <nameValuePair>
         <name>model</name>
         <value>
-          <string>src/main/resources/data/gene_model</string>
+          <string>/data/gene_model</string>
         </value>
       </nameValuePair>
     </configurationParameterSettings>

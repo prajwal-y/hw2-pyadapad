@@ -1,6 +1,5 @@
 package project.deiis.hw2;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.Iterator;
 
@@ -33,15 +32,11 @@ public class LingPipeGeneDataProcessor extends JCasAnnotator_ImplBase {
 
   @Override
   public void process(JCas jCas) throws AnalysisEngineProcessException {
-    // Open the model file and train the chunker with the gene model
-    // The model is pre-trained
-     File modelFile = new File((String) getContext().getConfigParameterValue(MODEL));
-    chunker = null;
+    System.out.println("Processing using LingPipe");
     try {
-      chunker = (ConfidenceChunker) AbstractExternalizable.readObject(modelFile);
-      //chunker = (ConfidenceChunker) AbstractExternalizable
-      //        .readResourceObject(LingPipeGeneDataProcessor.class, (String) getContext()
-      //                .getConfigParameterValue(MODEL));
+      chunker = (ConfidenceChunker) AbstractExternalizable
+              .readResourceObject(LingPipeGeneDataProcessor.class, (String) getContext()
+                      .getConfigParameterValue(MODEL));
     } catch (IOException e) {
       System.out.println("IOException occurred: " + e.getMessage());
     } catch (ClassNotFoundException e) {
@@ -86,9 +81,7 @@ public class LingPipeGeneDataProcessor extends JCasAnnotator_ImplBase {
         annotation.setEndOffset(startOffset + gene.replace(" ", "").length() - 1);
         annotation.setBegin(counter);
         annotation.setEnd(geneProduct.length() - startOffset);
-        // annotation.setEnd(-10000);
         annotation.addToIndexes();
-        // System.out.println("GeneProduct: " + gene + " and confidence: " + confidence);
       }
     }
   }

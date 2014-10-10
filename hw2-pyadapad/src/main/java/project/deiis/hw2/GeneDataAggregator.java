@@ -56,11 +56,11 @@ public class GeneDataAggregator extends JCasAnnotator_ImplBase{
     int counter = 0;
     for(String key : order) {
       double confidence = lingPipeData.get(key);
-      if(confidence >= 0.575) {
+      if(confidence >= 0.9) {
         addToResults(key.split(":delim:"), jCas, counter++);
         continue;
       }
-      else if(confidence < 0.575 && confidence > 0.2) {
+      else if(confidence < 0.9 && confidence > 0.3) {
         if(abnerData.containsKey(key)) {
           addToResults(key.split(":delim:"), jCas, counter++);
         }
